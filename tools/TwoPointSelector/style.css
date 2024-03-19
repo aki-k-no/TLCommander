@@ -1,0 +1,58 @@
+header{
+	
+	text-align: center;
+	font-size: 50px;
+	padding : 10px;
+	
+}
+
+#main{
+	text-align: center;	
+}
+
+#description{
+	padding: 6px;
+}
+#list{
+	padding: 6px;
+}
+
+#input{
+	
+}
+.explainer{
+	text-align:  center;
+	font-size: 30px;
+	width: 100%;
+}
+
+#answer{
+	text-align:  center;
+	font-size: 10px;
+	width: 100%;
+	
+}
+
+.inputf{
+	width: 25%;
+	font-size: 20px;
+}
+
+tr{
+	width: 100%;
+}
+
+#example{
+	font-size: 20px;
+	text-align: center;
+	
+}
+.coords{
+	background-color:#ffffff;
+	width: 20%;
+	height:30px;
+	text-align:center;
+	font-size: 15px;
+	border-width: 1px;
+}
+
