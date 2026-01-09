@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD lang="ja">
+		<meta charset="UTF-8">
+		<title>TLCommander</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../textbox.css">
+		<script src="script.js">
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Kiwi+Maru:wght@300&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+
+    </HEAD>
+    <BODY>
+		<header>ツール:ShapesGeneratorHelper</header>
+		<HR>
+		<div id="main">
+			<div class="explainer">もともとの<a href="https://chencmd.github.io/Shapes-Generator/">Shapes Generator</a>コマンド</div>
+			
+				<label>元のコマンド<br>
+				<textarea id="input" min="0" rows="12" cols="200"></textarea></label>
+					
+			<HR>
+			<div class="explainer">particle or particleplay</div>
+			<button id="select" size="1" onclick="changeMode()">particleplay</button>
+			<HR>
+			
+			<div class="explainer">中心点指定</div>
+			<label>x:<input type="number" class="coords" id="coords1" size="1" value="0"></label>
+			<label>y:<input type="number" class="coords" id="coords2" size="1" value="0"></label>
+			<label>z:<input type="number" class="coords" id="coords3" size="1" value="0"></label>
+			<HR>
+			<div class="explainer">極座標表示における回転角(度数表記、ラジアンではない)指定</div>
+			<label>θ:<input type="number" class="coords" id="theta" size="1" value="0"></label>
+			<label>φ:<input type="number" class="coords" id="phi" size="1" value="0"></label>
+			<HR>
+			<div class="explainer">平行移動指定or絶対座標指定</div>
+			<button id="select2" size="1" onclick="changeMode2()">相対座標</button>
+			<label>x:<input type="number" class="coords" id="shiftx" size="1" value="0"></label>
+			<label>y:<input type="number" class="coords" id="shifty" size="1" value="0"></label>
+			<label>z:<input type="number" class="coords" id="shiftz" size="1" value="0"></label>
+			<HR>
+			<div class="explainer">パーティクル名指定</div>
+			<label>名前:<input type="text" class="coords" id="particle" size="1" value="flame"></label>
+			<HR>
+			<div class="explainer">コマンド出力</div><BR>
+			<button id="calc" onclick="calc2()">ポチっとな(クリップボードにコピーもします)</button><BR>
+			<div id="answer">出力</div>
+			<button id="calc" onclick="calc()">ぽちっとするだけ</button>
+			
+			
+		</div>
+		<HR>
+		
+	
+		
+    </BODY>
+</HTML>

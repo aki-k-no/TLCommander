@@ -1,24 +1,28 @@
 import logo from './logo.svg';
-import './App.css';
+import './style.css';
+import React from "react";
+import { Link } from 'react-router-dom';
+import {
+HashRouter as Router,
+Routes,
+Route,
+} from "react-router-dom";
+import Home from './Home.js';
+import TwoPointSelector from './tools/TwoPointSelector.js';
+import ImageToKillEffect from "./tools/ImageToKillEffect.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div className="app">
+		<Router>
+			<Routes>
+				<Route element={<Home />} />
+				<Route path="/" element={<Home />} />
+				<Route path="/Tools_TwoPointSelector" element={<TwoPointSelector />} />
+				<Route path="/Tools_ImageToKillEffect" element={<ImageToKillEffect />} />
+			</Routes>
+		</Router>
+	</div>
   );
 }
 

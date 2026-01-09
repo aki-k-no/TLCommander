@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD lang="ja">
+		<meta charset="UTF-8">
+		<title>TLCommander</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="../textbox.css">
+		<script src="script.js">
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Kaisei+Decol&family=Kiwi+Maru:wght@300&family=Stick&family=Yusei+Magic&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Tilt+Warp&display=swap" rel="stylesheet">
+
+    </HEAD>
+    <BODY>
+		<header>計算機:チェストのアイテム期待値</header>
+		<HR>
+		<div id="main">
+			<div class="explainer">確定枠チェスト</div>
+			<table id="input">
+				
+				<tr>
+					<td class="inputf">
+					<p>アイテムの出現数<br>
+					<input type="number" id="guaranteed_all_num" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムがチェストに占める枠数<br>
+					<input type="number" id="guaranteed_target_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>全アイテムのチェスト内の枠数<br>
+					<input type="number" id="guaranteed_all_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムのスタック数<br>
+					(異なるものが複数ある場合は平均値)<br>
+					<input type="number" id="guaranteed_target_num" min="0" size="5" placeholder="0"></p>
+					</td>
+				</tr>
+			</table>
+			<HR>
+			<div class="explainer">非確定枠チェスト</div>
+			<table id="input">
+				
+				<tr>
+					<td class="inputf">
+					<p>アイテムの出現数<br>
+					<input type="number" id="else_all_num" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムがチェストに占める枠数<br>
+					<input type="number" id="else_target_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>全アイテムのチェスト内の枠数<br>
+					<input type="number" id="else_all_slot" min="0" size="5" placeholder="0"></p>
+					</td>
+					<td class="inputf">
+					<p>調べたいアイテムのスタック数<br>
+					(異なるものが複数ある場合は平均値)<br>
+					<input type="number" id="else_target_num" min="0" size="5" placeholder="0"></p>
+					</td>
+				</tr>
+			</table>
+			<HR>
+			<div class="explainer">1個のチェストから出る平均値は...</div><BR>
+			<button id="calc" onclick="calc()">計算する</button><BR><BR>
+			<div id="answer">0</div>
+			
+		</div>
+		<HR>
+		<div id="example">
+		使い方
+		例えば下のような状況だとする、一枚目の画像が確定枠のチェスト、二枚目の画像が非確定枠のチェストだとする。<BR>
+		確定枠のチェストからは1個、非確定枠のチェストからは2個(ただし、サブ報酬の54枠もある)アイテムが抽選されるとする。<BR>
+		この状況で、赤羊毛が何個出てくるか計算したいとする。<BR>
+		<img src="a1.png" width="500px">
+		<img src="a2.png" width="500px"><BR>
+		この時、入力は以下のようになる<BR>
+		<img src="b1.png" width="1200px"><BR>
+		まずアイテムの出現数に付いて説明する。これは、それぞれのチェストから実際の報酬チェストに何枠抽選されるかを示している。<BR>
+		なので、確定枠からは1個、非確定枠からは2個抽選されるため、それぞれ1と2になっている。<BR>
+		次に、調べたいアイテムがチェストに占める枠数について説明する。これは、目的のアイテム(この場合は赤羊毛)が各チェストに何枠あるかを示している。<BR>
+		なので、確定枠チェストには赤羊毛が4枠、非確定枠には18枠入っているため、それに対応した数字が入力される。<BR>
+		さらに、全アイテムのチェスト内の枠数について説明する。これは、すべてのアイテムが各チェストに何枠あるかを示している。<BR>
+		なので、確定枠チェストにはアイテムが36枠、非確定枠には(54枠+サブ報酬チェストの54枠=)108枠が入っているため、それに対応した数字36,108が入力される。<BR>
+		最後に、調べたいアイテムのスタック数について説明する。これは、目的のアイテム(この場合は赤羊毛)が一枠あたり何個あるかを示している。<BR>
+		なので、確定枠チェストの赤羊毛は1枠に平均6/4=1.5個、非確定枠には18/18=1個入っているため、それに対応した数字1.5,1が入力される。<BR>
+		
+		</div>
+	
+		
+    </BODY>
+</HTML>
