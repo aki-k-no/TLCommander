@@ -2,7 +2,7 @@
   "name": "tlcommander",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/aki-k-no/TLCommander",
+  "homepage": "https://aki-k-no.github.io/TLCommander",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "rm": "rm -rf docs",
     "mv": "mv build docs",
-    "git": "git add . && git commit -m \"update via npm\" && git push origin main",
+    "git": "git add . && git commit -m \"update via npm\" && git push origin master:main",
     "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
